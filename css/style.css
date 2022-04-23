@@ -1,0 +1,124 @@
+/* ---- reset ---- */
+body {
+  margin: 0;
+  font-family: "Varela Round", sans-serif;
+  color: white;
+  background-color: #010101;
+}
+
+canvas {
+  display: block;
+  vertical-align: bottom;
+}
+
+/* ---- particles.js container ---- */
+#particles-js {
+  background-color: #000000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.container1 {
+  position: relative;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: cyan;
+  font-size: 1.5rem;
+  padding-left: 3.5rem;
+}
+
+.navbar-dark .navbar-nav .nav-link a:hover {
+  color: #7e7474;
+}
+
+.main-heading1,
+.main-heading2 {
+  text-align: center;
+  font-size: 5rem;
+}
+
+.middle-text {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 3rem;
+}
+
+.container2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.container3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.bottom-heading1 {
+  margin: 4rem 20rem 0 0;
+}
+
+.bottom-heading2 {
+  margin: 4rem 0 0 20rem;
+}
+
+.bot-head {
+  font-size: 1.2rem;
+}
+
+.fcfs-head {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.rand-text {
+  font-size: 1rem;
+}
+
+.fcfs-proc,
+.fcfs-arr,
+.fcfs-bur,
+.fcfs-qua,
+.priority {
+  font-size: 1rem;
+  margin: 10px;
+}
+
+.fcfs-disp {
+  padding-left: 5px;
+}
+
+.tab-fcfs {
+  width: 100%;
+  margin: 50px 20px 20px 40px;
+}
+
+.bot-fcfs,
+.refresh-fcfs {
+  text-align: center;
+  margin: 50px 0 0 0;
+  font-size: 1rem;
+}
+
+.fcfs-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.fcfs-input1 {
+  margin: 20px 800px 0 0;
+}
+
+.fcfs-input2 {
+  margin: 120px 0 0 0;
+}
