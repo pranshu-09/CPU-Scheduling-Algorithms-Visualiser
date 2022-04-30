@@ -8,37 +8,11 @@ var totWait = 0;
 var totTat = 0;
 var quantum;
 
-$(document).ready(function() {
-  process = Math.floor(Math.random() * 10) + 1;
-  
-  quantum = Math.floor(Math.random() * 4) + 1;
+const roundRobin = () => {
+  console.assert(arrival.length === burst.length);
+  process = arrival.length;
 
-  for (let i = 0; i < process; i++) {
-    arrival[i] = i;
-  }
-
-  for (let i = 0; i < process; i++) {
-    burst[i] = Math.floor(Math.random() * 10) + 1;
-  }
-
-
-  function dispData() {
-    let p = "<span style=\"padding-left: 5px;\">" + process + "</span>";
-    $(".fcfs-proc").append(p);
-
-    for (let i = 0; i < process; i++) {
-      let a = "<span style=\"padding-left: 5px;\">" + arrival[i] + "</span>";
-      $(".fcfs-arr").append(a);
-    }
-
-    for (let i = 0; i < process; i++) {
-      let b = "<span style=\"padding-left: 5px;\">" + burst[i] + "</span>";
-      $(".fcfs-bur").append(b);
-    }
-    
-    let c = "<span style=\"padding-left: 5px;\">" + quantum + "</span>";
-    $(".fcfs-qua").append(c);
-  }
+  quantum = Number(document.getElementById("timeQuantum").value);
 
   function calcAvg() {
     let remTime = [];
@@ -56,8 +30,7 @@ $(document).ready(function() {
             t = t + quantum;
             remTime[i] = remTime[i] - quantum;
             a++;
-          }
-          else {
+          } else {
             if (arrival[i] <= a) {
               a++;
               t = t + remTime[i];
@@ -106,17 +79,45 @@ $(document).ready(function() {
       tb.appendChild(tr);
     }
 
-    document.querySelector(".bot-fcfs-con1").innerHTML = "AVERAGE WAITING TIME : " + (totWait / process);
-    document.querySelector(".bot-fcfs-con2").innerHTML = "AVERAGE TURN AROUND TIME : " + (totTat / process);
+    document.querySelector(".bot-fcfs-con1").innerHTML =
+      "AVERAGE WAITING TIME : " + totWait / process;
+    document.querySelector(".bot-fcfs-con2").innerHTML =
+      "AVERAGE TURN AROUND TIME : " + totTat / process;
   }
 
-  dispData();
   calcAvg();
   dispTable();
+};
+
+$(".btn").click(function () {
+  document.querySelector(".tab-fcfs").innerHTML = `
+    <tr>
+      <th>PROCESS</th>
+      <th>ARRIVAL TIME</th>
+      <th>BURST TIME</th>
+      <th>WAITING TIME</th>
+      <th>TURN AROUND TIME</th>
+      <th>COMPLETION TIME</th>
+    </tr>
+  `;
+  roundRobin();
 });
 
-$(".btn").click(function() {
-  window.location.href=window.location.href;
+$("#add-data-button").click((e) => {
+  // e.preventDefault();
+  const existingTable = document.getElementById("data-table").innerHTML;
+  const arrivalTimeFromInput = document.getElementById("arr-time").value;
+  const burstTimeFromInput = document.getElementById("burst-time").value;
+  const updatedTable =
+    existingTable +
+    `
+            <tr class="table-row">
+              <th class="table-row-item">${arrivalTimeFromInput}</th>
+              <th class="table-row-item">${burstTimeFromInput}</th>
+            </tr>
+  `;
+  document.getElementById("data-table").innerHTML = updatedTable;
+  arrival.push(Number(arrivalTimeFromInput));
+  burst.push(Number(burstTimeFromInput));
+  document.getElementById("data-input-form").reset();
 });
-
-window.onload = console.log('hello');

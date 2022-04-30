@@ -2,10 +2,14 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
-    <title>CPU ALGO VISUALISER</title>
+    <title>CPU SCHEDULING ALGORITHMS VISUALISER</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap"
       rel="stylesheet"
     />
     <link
@@ -40,29 +44,44 @@
         </ul>
       </nav>
       <div class="fcfs-head" style="margin-top: 30px; margin-bottom: 10px">
-        ROUND ROBIN
+        ROUND ROBIN SCHEDULING
       </div>
+
       <div class="fcfs-input" style="margin: 20px">
-        <div class="fcfs-input1">
-          <p class="rand-text" style="padding-left: 10px">
-            GENERATING RANDOM VALUES...
-          </p>
-          <div class="fcfs-proc">
-            <span>THE NUMBER OF PROCESSES : </span>
+        <div style="display: flex; flex-direction: column; width: 100%">
+          <div style="display: flex; gap: 10px; margin-bottom: 15px">
+            <label style="font-weight: 600" for="timeQuantum"
+              >TIME QUANTUM</label
+            >
+            <input type="number" name="timeQuantum" id="timeQuantum" />
           </div>
-          <div class="fcfs-arr">
-            <span>THE ARRIVAL TIMES : </span>
-          </div>
-          <div class="fcfs-bur">
-            <span>THE BURST TIMES : </span>
-          </div>
-          <div class="fcfs-qua">
-            <span>THE TIME QUANTUM : </span>
+          <div class="fcfs-input1">
+            <table id="data-table">
+              <tr class="table-row">
+                <th class="table-row-item">ARRIVAL TIME</th>
+                <th class="table-row-item">BURST TIME</th>
+              </tr>
+            </table>
+            <form id="data-input-form" class="table-row">
+              <input
+                type="number"
+                id="arr-time"
+                class="table-row-item"
+                required
+              />
+              <input
+                type="number"
+                id="burst-time"
+                class="table-row-item"
+                required
+              />
+              <input type="submit" value="Add" id="add-data-button" />
+            </form>
           </div>
         </div>
         <div class="">
           <button type="button" class="btn btn-outline-light btn-lg">
-            GO AGAIN
+            COMPUTE
           </button>
         </div>
       </div>

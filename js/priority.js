@@ -10,23 +10,14 @@ var cTime = [];
 var totWait = 0;
 var totTat = 0;
 
-$(document).ready(function() {
-  number = Math.floor(Math.random() * 10) + 1;
+const priorityScheduling = () => {
+  console.assert(
+    arrival.length === burst.length && burst.length === priority.length
+  );
+  number = arrival.length;
 
   for (let i = 0; i < number; i++) {
     process[i] = new Array(4);
-  }
-
-  for (let i = 0; i < number; i++) {
-    arrival[i] = i;
-  }
-
-  for (let i = 0; i < number; i++) {
-    burst[i] = Math.floor(Math.random() * 10) + 1;
-  }
-
-  for (let i = 0; i < number; i++) {
-    priority[i] = Math.floor(Math.random() * 10) + 1;
   }
 
   for (let i = 0; i < number; i++) {
@@ -34,33 +25,12 @@ $(document).ready(function() {
     process[i][1] = arrival[i];
     process[i][2] = burst[i];
     process[i][3] = priority[i];
-  } 
-
-  function dispData() {
-    let p = "<span style=\"padding-left: 5px;\">" + number + "</span>";
-    $(".fcfs-proc").append(p);
-
-    for (let i = 0; i < number; i++) {
-      let a = "<span style=\"padding-left: 5px;\">" + arrival[i] + "</span>";
-      $(".fcfs-arr").append(a);
-    }
-
-    for (let i = 0; i < number; i++) {
-      let b = "<span style=\"padding-left: 5px;\">" + burst[i] + "</span>";
-      $(".fcfs-bur").append(b);
-    }
-
-    for (let i = 0; i < number; i++) {
-      let c = "<span style=\"padding-left: 5px;\">" + priority[i] + "</span>";
-      $(".Priority").append(c);
-    }
   }
 
   function comp(a, b) {
     if (a[1] === b[1]) {
       return a[3] < b[3];
-    }
-    else {
+    } else {
       return a[1] < b[1];
     }
   }
@@ -117,17 +87,47 @@ $(document).ready(function() {
       tb.appendChild(tr);
     }
 
-    document.querySelector(".bot-fcfs-con1").innerHTML = "AVERAGE WAITING TIME : " + (totWait / number);
-    document.querySelector(".bot-fcfs-con2").innerHTML = "AVERAGE TURN AROUND TIME : " + (totTat / number);
+    document.querySelector(".bot-fcfs-con1").innerHTML =
+      "AVERAGE WAITING TIME : " + totWait / number;
+    document.querySelector(".bot-fcfs-con2").innerHTML =
+      "AVERAGE TURN AROUND TIME : " + totTat / number;
   }
 
-  dispData();
   calcAvg();
   dispTable();
+};
+
+$(".btn").click(function () {
+  document.querySelector(".tab-fcfs").innerHTML = `
+      <tr>
+        <th>PROCESS</th>
+        <th>START TIME</th>
+        <th>COMPLETE TIME</th>
+        <th>TURN AROUND TIME</th>
+        <th>WAITING TIME</th>
+      </tr>
+  `;
+  priorityScheduling();
 });
 
-$(".btn").click(function() {
-  window.location.href=window.location.href;
+$("#add-data-button").click((e) => {
+  // e.preventDefault();
+  const existingTable = document.getElementById("data-table").innerHTML;
+  const arrivalTimeFromInput = document.getElementById("arr-time").value;
+  const burstTimeFromInput = document.getElementById("burst-time").value;
+  const priorityFromInput = document.getElementById("priority").value;
+  const updatedTable =
+    existingTable +
+    `
+            <tr class="table-row">
+              <th class="table-row-item">${arrivalTimeFromInput}</th>
+              <th class="table-row-item">${burstTimeFromInput}</th>
+              <th class="table-row-item">${priorityFromInput}</th>
+            </tr>
+  `;
+  document.getElementById("data-table").innerHTML = updatedTable;
+  arrival.push(Number(arrivalTimeFromInput));
+  burst.push(Number(burstTimeFromInput));
+  priority.push(Number(priorityFromInput));
+  document.getElementById("data-input-form").reset();
 });
-
-window.onload = console.log('hello');

@@ -109,6 +109,7 @@ canvas {
 }
 
 .fcfs-input {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -116,9 +117,26 @@ canvas {
 }
 
 .fcfs-input1 {
-  margin: 20px 800px 0 0;
+  width: 100%;
 }
 
 .fcfs-input2 {
   margin: 120px 0 0 0;
+}
+
+.table-row {
+  display: flex;
+  gap: 10px;
+}
+
+.input-form {
+  display: flex;
+  gap: 50px;
+}
+.data-input {
+  width: 50px;
+}
+
+.table-row-item {
+  width: 200px;
 }

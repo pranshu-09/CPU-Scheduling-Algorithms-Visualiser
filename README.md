@@ -1,1 +1,1 @@
-# CPU-Scheduling-Algorithms-Visualiser
+# CPU-ALGO-VIS

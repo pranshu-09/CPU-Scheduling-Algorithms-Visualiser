@@ -2,10 +2,14 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
-    <title>CPU ALGO VISUALISER</title>
+    <title>CPU SCHEDULING ALGORITHMS VISUALISER</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap"
       rel="stylesheet"
     />
     <link
@@ -44,25 +48,50 @@
       </div>
       <div class="fcfs-input" style="margin: 20px">
         <div class="fcfs-input1">
-          <p class="rand-text" style="padding-left: 10px">
-            GENERATING RANDOM VALUES...
-          </p>
-          <div class="fcfs-proc">
-            <span>THE NUMBER OF PROCESSES : </span>
+          <table id="data-table">
+            <tr class="table-row">
+              <th class="table-row-item">ARRIVAL TIME</th>
+              <th class="table-row-item">BURST TIME</th>
+              <th class="table-row-item">PRIORITY</th>
+            </tr>
+          </table>
+          <form id="data-input-form" class="table-row">
+            <input
+              type="number"
+              id="arr-time"
+              class="table-row-item"
+              required
+            />
+            <input
+              type="number"
+              id="burst-time"
+              class="table-row-item"
+              required
+            />
+            <input
+              type="number"
+              id="priority"
+              class="table-row-item"
+              required
+            />
+            <input type="submit" value="Add" id="add-data-button" />
+          </form>
+          <!-- <div class="fcfs-proc">
+            <span>ENTER NUMBER OF PROCESSES : </span>
+            <input id="fcfs-proc-input" type="number" />
           </div>
           <div class="fcfs-arr">
             <span>THE ARRIVAL TIMES : </span>
+            <input id="fcfs-arr-input" type="text" />
           </div>
           <div class="fcfs-bur">
             <span>THE BURST TIMES : </span>
-          </div>
-          <div class="Priority" style="padding-left: 10px">
-            <span>THE PRIORITIES : </span>
-          </div>
+            <input id="fcfs-bur-input" type="text" />
+          </div> -->
         </div>
         <div class="">
           <button type="button" class="btn btn-outline-light btn-lg">
-            GO AGAIN
+            COMPUTE
           </button>
         </div>
       </div>
